@@ -1,5 +1,7 @@
 This script monitors the available disk space and sends a warning email to root as soon as the disk usage reaches 80%.
-
+1-Create a file with a .sh extension
+2-Add an execute permission to the file to avoid permission denied errors during execution (chmod +x filename.sh)
+3-Use the ./ (dot slash)  notation and run the shell script by name in the Terminal window (./harddisk.sh)
 
 #!/bin/bash
 
