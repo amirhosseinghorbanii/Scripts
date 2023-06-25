@@ -1,0 +1,31 @@
+1-Create a file with a .sh extension
+2-Add an execute permission to the file to avoid permission denied errors during execution (chmod +x filename.sh)
+3-Use the ./ (dot slash)  notation and run the shell script by name in the Terminal window (./game.sh)
+
+#!/bin/bash
+# Generate a Random Number between 100 & 1
+number=$((RANDOM % 100 + 1))
+# Defining a Function for Guess the Number
+function guess_number {
+if [[ $1 -lt $number ]]; then
+echo "Your Guess is less than the Number!"
+elif [[ $1 -gt $number ]]; then
+echo "Your Guess is more than the Number!"
+else
+echo "Congratulations! You guessed the Number Successfully!"
+exit
+fi
+}
+# Starting the Game with Asking the First Number
+echo "Welcome to the Guess the Number Game!"
+echo "Please Guess the Number between 1~100 : "
+while true; do
+read guess
+# Checking the Numbers & Alphabets
+if [[ "$guess" =~ ^[[:digit:]]+$ ]] && [[ ! "$guess" =~ [[:alpha:]] ]]; then
+guess_number $guess
+else
+echo "Please enter a Valid Number"
+fi
+done
+# End of the Game
