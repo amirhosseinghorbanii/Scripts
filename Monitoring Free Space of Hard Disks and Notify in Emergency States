@@ -1,1 +1,19 @@
-# Scripts
+#!/bin/bash
+
+while true
+
+do
+
+AVAILABE=`df -TH | grep /dev/sda3 | awk '{ print $6 }' | cut -d "%" -f1`
+
+if [ $AVAILABE -ge 80 ]
+
+then
+
+    echo "Hard Disk Usage is: %$AVAILABE" |mail -s "Disk Usage Alert" root@localhost
+
+fi
+
+sleep 10
+
+done
