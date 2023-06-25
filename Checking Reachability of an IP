@@ -1,0 +1,38 @@
+This script first validates the IP, then checks its reachability by pinging the IP, and then prints the result in the output.
+1-Create a file with a .sh extension
+2-Add an execute permission to the file to avoid permission denied errors during execution (chmod +x filename.sh)
+3-Use the ./ (dot slash)  notation and run the shell script by name in the Terminal window (./ipvalidation.sh)
+
+#!/bin/bash
+
+while [ -z $IP ]
+do
+read -p "Please Enter IP ADDRESS: " IP
+IP=`echo $IP | tr -d [:alpha:]`
+DOT=`echo $IP | tr -d [:digit:] | tr -d [:space:] | wc -c`
+done
+
+if [ $DOT -eq 3 ]
+then
+	for i in 1 2 3 4 
+	do 
+		VAR=`echo $IP | cut -d "." -f $i`
+		if [ $VAR -gt 255 ]
+		then 
+			echo "IP is not Valid"
+			exit 1
+		fi
+	done
+	echo "IP is Validated!" 
+	ping -c 1 $IP >> /dev/null
+	if [ $? -eq 0 ]
+	then 
+		echo "IP is Pingable!"
+	else 
+		echo "IP is not Pingable"
+	fi 
+	exit 0
+else
+	echo "IP is not valid, please try again"
+	exit 1 
+fi 
