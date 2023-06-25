@@ -1,0 +1,14 @@
+1-Create a file with a .sh extension
+2-Add an execute permission to the file to avoid permission denied errors during execution (chmod +x filename.sh)
+3-Use the ./ (dot slash)  notation and run the shell script by name in the Terminal window (./Tcpconnection.sh)
+
+#!/bin/bash
+
+while true
+do 
+	TCP=`netstat -pentual | grep ESTABLISHED | wc -l`
+
+	echo "`date +%Y/%m/%d-%H:%M:%S`: Number of TCP Connections are: $TCP" >> /root/TCPConnection_`date +%Y%m%d`.log
+
+       sleep 1	
+done
