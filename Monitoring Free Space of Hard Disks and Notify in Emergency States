@@ -1,3 +1,6 @@
+This script monitors the available disk space and sends a warning email to root as soon as the disk usage reaches 80%.
+
+
 #!/bin/bash
 
 while true
