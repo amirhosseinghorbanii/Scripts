@@ -1,0 +1,20 @@
+This script checks the free memory space of ram every 5 seconds and records it in the output file along with the date and time.
+1-Create a file with a .sh extension
+2-Add an execute permission to the file to avoid permission denied errors during execution (chmod +x filename.sh)
+3-Use the ./ (dot slash)  notation and run the shell script by name in the Terminal window (./memory.sh)
+
+#!/bin/bash
+
+while true
+
+do
+
+DATE=`date +%Y/%m/%d-%H:%M:%S`
+
+  echo -e "===========================" "\n$DATE" >> /root/MemoryReport.log
+
+cut -d $'\n' -f 2 /proc/meminfo >> /root/MemoryReport.log
+
+sleep 5
+
+done
