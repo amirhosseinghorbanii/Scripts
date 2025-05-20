@@ -1,5 +1,6 @@
 
-# 🔧 Bash and Ansible Automation Scripts
+
+# 🔧 Bash Scripts
 
 This repository contains a collection of useful scripts written in Bash to assist with automation, monitoring, and system management.
 
